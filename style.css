@@ -1,23 +1,34 @@
-/* ===== COLOR PALETTE (Applied) ===== */
+/* ===== REFINED COLOR PALETTE (Blue Focus with Specified Colors) ===== */
 :root {
-    /* Primary Brand Colors */
+    /* Specified Brand Colors */
     --dusty-lavender: #B8A9D9;
     --periwinkle-purple: #8B7FCC;
     --soft-blush: #F4C2C2;
     --baby-pink: #FFD1DC;
-    --warm-ivory: #FDF8F0;
     --sand-beige: #E8DCC6;
     --off-white-pearl: #FEF9F0;
-    --mustard-gold: #D4A373;
-    --terracotta-clay: #C9826C;
-    --deep-slate: #2B3A4A;
+    --deep-slate: #2B3A4A;        /* Deep Slate Blue */
     --powder-blue: #B5D8FF;
     --soft-lilac: #D9C8F2;
+    
+    /* Keeping warm accent colors for contrast */
+    --mustard-gold: #D4A373;
+    --terracotta-clay: #C9826C;
+    --warm-ivory: #FDF8F0;
+    
+    /* Extended Blue Accents for stronger blue presence */
+    --ocean-blue: #4A7FAD;
+    --sky-blue: #7BA8C9;
+    --deep-blue: #2C5282;
+    --ice-blue: #D6E8F7;
+    --slate-blue: #5B7B9A;
     
     /* Functional Roles */
     --primary: var(--periwinkle-purple);
     --primary-dark: #6E62B3;
     --primary-light: #A69BDE;
+    --secondary-blue: var(--powder-blue);
+    --secondary-blue-dark: #8BB8E8;
     --accent: var(--mustard-gold);
     --accent-light: #E2B88A;
     --accent-rgb: 212, 163, 115;
@@ -29,17 +40,21 @@
     --text-primary: var(--deep-slate);
     --text-secondary: #5D6E7D;
     --text-tertiary: #8A9AAB;
+    --text-blue-accent: #3A6B8C;
     
     --bg-primary: var(--off-white-pearl);
-    --bg-secondary: var(--warm-ivory);
-    --bg-tertiary: var(--sand-beige);
+    --bg-secondary: #F0F5FC;       /* Blue-tinted light background */
+    --bg-tertiary: #E8EDF5;        /* Softer blue-gray */
     --bg-soft: var(--soft-lilac);
+    --bg-powder: var(--powder-blue);
     
-    --border-color: rgba(184, 169, 217, 0.25);
+    --border-color: rgba(139, 127, 204, 0.25);
     --border-light: var(--sand-beige);
+    --border-blue: rgba(75, 127, 170, 0.2);
     
     --card-shadow: 0 20px 35px -12px rgba(43, 58, 74, 0.08);
-    --hover-shadow: 0 25px 40px -14px rgba(43, 58, 74, 0.12);
+    --hover-shadow: 0 25px 40px -14px rgba(44, 82, 130, 0.15);
+    --shadow-blue: 0 8px 20px rgba(75, 127, 170, 0.12);
     
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-serif: 'Playfair Display', Georgia, serif;
@@ -65,7 +80,7 @@
 
 body {
     font-family: var(--font-sans);
-    background: linear-gradient(145deg, var(--off-white-pearl) 0%, var(--warm-ivory) 100%);
+    background: linear-gradient(145deg, var(--off-white-pearl) 0%, var(--bg-secondary) 100%);
     color: var(--text-primary);
     line-height: 1.6;
 }
@@ -107,7 +122,7 @@ h1, h2, h3, h4 {
 .section-title {
     font-size: 2.5rem;
     margin-bottom: var(--space-sm);
-    background: linear-gradient(135deg, var(--deep-slate), var(--periwinkle-purple));
+    background: linear-gradient(135deg, var(--deep-slate), var(--ocean-blue));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -118,7 +133,7 @@ h1, h2, h3, h4 {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(254, 249, 240, 0.92);
+    background: rgba(254, 249, 240, 0.95);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
     z-index: 1000;
@@ -165,13 +180,13 @@ h1, h2, h3, h4 {
     cursor: pointer;
 }
 
-/* Hero Section */
+/* Hero Section - Blue-forward with Powder Blue */
 .hero {
     min-height: 90vh;
     display: flex;
     align-items: center;
     position: relative;
-    background: radial-gradient(circle at 10% 30%, var(--baby-pink) 0%, var(--warm-ivory) 70%);
+    background: radial-gradient(circle at 10% 30%, var(--powder-blue) 0%, var(--baby-pink) 40%, var(--warm-ivory) 80%);
     overflow: hidden;
 }
 
@@ -190,7 +205,7 @@ h1, h2, h3, h4 {
 }
 
 .hero-highlight {
-    background: linear-gradient(120deg, var(--mustard-gold), var(--terracotta-clay));
+    background: linear-gradient(120deg, var(--ocean-blue), var(--periwinkle-purple));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -215,7 +230,7 @@ h1, h2, h3, h4 {
 .btn-primary:hover {
     background: var(--primary-dark);
     transform: translateY(-3px);
-    box-shadow: 0 12px 20px rgba(139, 127, 204, 0.3);
+    box-shadow: 0 12px 20px rgba(139, 127, 204, 0.35);
 }
 
 /* Social Bar */
@@ -266,8 +281,13 @@ h1, h2, h3, h4 {
     padding: 1.5rem;
     border-radius: 24px;
     box-shadow: var(--card-shadow);
-    border-left: 6px solid var(--mustard-gold);
+    border-left: 6px solid var(--ocean-blue);
     transition: all 0.2s;
+}
+
+.about-card:hover {
+    transform: translateX(4px);
+    box-shadow: var(--shadow-blue);
 }
 
 .about-card-icon {
@@ -283,7 +303,7 @@ h1, h2, h3, h4 {
     margin-bottom: 1rem;
 }
 
-/* Pillars - 3 in row with new colors */
+/* Pillars with balanced blue accents */
 .pillars-grid {
     display: flex;
     justify-content: center;
@@ -299,17 +319,17 @@ h1, h2, h3, h4 {
     width: 280px;
     transition: all 0.25s;
     box-shadow: var(--card-shadow);
-    border: 1px solid rgba(184, 169, 217, 0.3);
+    border: 1px solid rgba(139, 127, 204, 0.25);
 }
 
 .pillar-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--hover-shadow);
-    border-color: var(--dusty-lavender);
+    border-color: var(--powder-blue);
 }
 
 .pillar-icon {
-    background: linear-gradient(145deg, var(--baby-pink), var(--soft-blush));
+    background: linear-gradient(145deg, var(--powder-blue), var(--soft-lilac));
     width: 80px;
     height: 80px;
     margin: 0 auto 1.2rem;
@@ -318,7 +338,7 @@ h1, h2, h3, h4 {
     align-items: center;
     justify-content: center;
     font-size: 2.2rem;
-    color: var(--terracotta-clay);
+    color: var(--ocean-blue);
 }
 
 /* Initiatives */
@@ -338,6 +358,7 @@ h1, h2, h3, h4 {
 
 .initiative-card:hover {
     transform: translateY(-6px);
+    box-shadow: var(--shadow-blue);
 }
 
 .initiative-visual {
@@ -356,7 +377,7 @@ h1, h2, h3, h4 {
     position: absolute;
     top: 1rem;
     left: 1rem;
-    background: var(--mustard-gold);
+    background: var(--powder-blue);
     color: var(--deep-slate);
     padding: 0.2rem 1rem;
     border-radius: 40px;
@@ -377,6 +398,11 @@ h1, h2, h3, h4 {
     text-decoration: none;
 }
 
+.initiative-link:hover {
+    color: var(--ocean-blue);
+    gap: 0.8rem;
+}
+
 /* involvement grid */
 .involvement-grid {
     display: grid;
@@ -389,6 +415,12 @@ h1, h2, h3, h4 {
     border-radius: 28px;
     overflow: hidden;
     transition: 0.2s;
+    box-shadow: var(--card-shadow);
+}
+
+.involvement-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-blue);
 }
 
 .involvement-visual {
@@ -406,14 +438,14 @@ h1, h2, h3, h4 {
 }
 
 .involvement-icon {
-    background: var(--baby-pink);
+    background: var(--powder-blue);
     width: 55px;
     height: 55px;
     border-radius: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--terracotta-clay);
+    color: var(--ocean-blue);
     font-size: 1.4rem;
     margin-bottom: 1rem;
 }
@@ -422,6 +454,10 @@ h1, h2, h3, h4 {
     color: var(--primary);
     font-weight: 600;
     text-decoration: none;
+}
+
+.involvement-link:hover {
+    color: var(--ocean-blue);
 }
 
 /* Community cards */
@@ -436,6 +472,12 @@ h1, h2, h3, h4 {
     border-radius: 28px;
     padding: 1.8rem;
     box-shadow: var(--card-shadow);
+    transition: 0.2s;
+}
+
+.community-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-blue);
 }
 
 .community-icon {
@@ -487,6 +529,12 @@ h1, h2, h3, h4 {
     font-weight: 600;
     text-align: center;
     text-decoration: none;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.btn-discord:hover, .btn-instagram:hover {
+    transform: scale(1.02);
+    opacity: 0.95;
 }
 
 .btn-discord { background: #5865F2; }
@@ -501,7 +549,7 @@ h1, h2, h3, h4 {
 }
 
 .footer-tagline {
-    color: var(--dusty-lavender);
+    color: var(--powder-blue);
 }
 
 .footer-social .social-link {
@@ -524,11 +572,12 @@ h1, h2, h3, h4 {
 }
 
 .contact-cta {
-    background: var(--bg-secondary);
+    background: linear-gradient(145deg, var(--bg-secondary), var(--bg-powder));
     padding: 2rem;
     border-radius: 2rem;
     text-align: center;
     margin-top: 2rem;
+    border: 1px solid var(--border-blue);
 }
 
 /* Contact Page Specific Styles */
@@ -558,6 +607,12 @@ h1, h2, h3, h4 {
     padding: 1rem;
     border-radius: 20px;
     background: var(--bg-secondary);
+    transition: 0.2s;
+}
+
+.contact-info-item:hover {
+    background: var(--bg-powder);
+    transform: translateX(4px);
 }
 
 .contact-icon {
@@ -637,7 +692,7 @@ h1, h2, h3, h4 {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: var(--mustard-gold);
+    background: var(--ocean-blue);
     border: none;
     width: 48px;
     height: 48px;
@@ -650,6 +705,6 @@ h1, h2, h3, h4 {
 }
 
 .scroll-top-btn:hover {
-    background: var(--terracotta-clay);
+    background: var(--deep-blue);
     transform: translateY(-3px);
 }
