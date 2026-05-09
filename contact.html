@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Her Ground</title>
+    <meta name="description" content="Get in touch with Her Ground - we'd love to hear from you!">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="social-bar">
+    <a href="https://instagram.com/thisisherground" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://discord.gg/mqjYGmQNRm" class="social-icon" target="_blank"><i class="fab fa-discord"></i></a>
+    <a href="https://www.linkedin.com/company/her-ground/" class="social-icon" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo">
+            <img src="Her groung LG png.png" alt="Logo" class="logo-img" onerror="this.src='https://placehold.co/100x100?text=HG'">
+        </a>
+        <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html#about" class="nav-link">About</a></li>
+            <li><a href="index.html#pillars" class="nav-link">Pillars</a></li>
+            <li><a href="index.html#initiatives" class="nav-link">Initiatives</a></li>
+            <li><a href="index.html#community" class="nav-link">Community</a></li>
+            <li><a href="index.html#get-involved" class="nav-link">Get Involved</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="contact-page">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">Get In Touch</span>
+            <h2 class="section-title">We'd Love to Hear From You</h2>
+            <p style="max-width: 600px; margin: 0 auto;">Have questions, ideas, or want to collaborate? Reach out to our team.</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-info-card">
+                <h3 style="margin-bottom: 1.5rem;">Connect With Us</h3>
+                <div class="contact-info-item">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <h4 style="margin-bottom: 0.2rem;">Email Us</h4>
+                        <a href="mailto:Info.herground@gmail.com" style="color: var(--primary); text-decoration: none;">Info.herground@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-info-item">
+                    <div class="contact-icon"><i class="fab fa-instagram"></i></div>
+                    <div>
+                        <h4 style="margin-bottom: 0.2rem;">Instagram</h4>
+                        <a href="https://instagram.com/thisisherground" target="_blank" style="color: var(--primary); text-decoration: none;">@thisisherground</a>
+                    </div>
+                </div>
+                <div class="contact-info-item">
+                    <div class="contact-icon"><i class="fab fa-discord"></i></div>
+                    <div>
+                        <h4 style="margin-bottom: 0.2rem;">Discord Community</h4>
+                        <a href="https://discord.gg/mqjYGmQNRm" target="_blank" style="color: var(--primary); text-decoration: none;">Join our server</a>
+                    </div>
+                </div>
+                <div class="contact-info-item">
+                    <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
+                    <div>
+                        <h4 style="margin-bottom: 0.2rem;">LinkedIn</h4>
+                        <a href="https://linkedin.com/company/herground" target="_blank" style="color: var(--primary); text-decoration: none;">Her Ground</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-card">
+                <h3 style="margin-bottom: 1.5rem;">Send Us a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="you@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="How can we help?">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Tell us what's on your mind..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;"><i class="fas fa-paper-plane"></i> Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem;">
+            <div>
+                <img src="Her groung LG png.png" alt="logo" style="height: 60px;" onerror="this.style.display='none'">
+                <p class="footer-tagline" style="margin-top: 1rem;">Empowering girls and young women through leadership, education, and community.</p>
+                <div class="footer-social" style="margin-top: 1.5rem;">
+                    <a href="https://instagram.com/thisisherground" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="https://discord.gg/mqjYGmQNRm" class="social-link"><i class="fab fa-discord"></i></a>
+                    <a href="https://linkedin.com/company/herground" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom" style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 2rem; padding-top: 1.5rem; text-align: center;">
+            <p class="copyright">&copy; 2025 Her Ground. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
