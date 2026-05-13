@@ -12,6 +12,59 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Success/Error message styles */
+        .form-success {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            font-weight: 500;
+        }
+        
+        .form-error {
+            background-color: #f44336;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            font-weight: 500;
+        }
+        
+        .form-success.show, .form-error.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .btn-primary:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        
+        .loading-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid white;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 0.6s linear infinite;
+            margin-right: 8px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
 
@@ -81,24 +134,51 @@
 
             <div class="contact-form-card">
                 <h3 style="margin-bottom: 1.5rem;">Send Us a Message</h3>
-                <form id="contactForm">
+                
+                <!-- Success/Error Messages -->
+                <div id="successMessage" class="form-success">
+                    <i class="fas fa-check-circle" style="margin-right: 10px;"></i>
+                    Thank you! Your message has been sent successfully. We'll get back to you soon!
+                </div>
+                <div id="errorMessage" class="form-error">
+                    <i class="fas fa-exclamation-circle" style="margin-right: 10px;"></i>
+                    Oops! Something went wrong. Please try again or email us directly at Info.herground@gmail.com
+                </div>
+                
+                <!-- Form with FormSubmit.co integration -->
+                <form id="contactForm" action="https://formsubmit.co/Info.herground@gmail.com" method="POST">
+                    <!-- FormSubmit.co configuration -->
+                    <input type="hidden" name="_subject" value="📬 New Contact Form Submission from Her Ground Website">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_autoresponse" value="Thank you for contacting Her Ground! We've received your message and will respond within 24-48 hours. Best regards, The Her Ground Team">
+                    
+                    <!-- Redirect to same page with success parameter -->
+                    <input type="hidden" name="_next" value="https://yourwebsite.com/contact.html?success=true">
+                    
                     <div class="form-group">
                         <label for="name">Full Name *</label>
                         <input type="text" id="name" name="name" required placeholder="Your name">
                     </div>
+                    
                     <div class="form-group">
                         <label for="email">Email Address *</label>
                         <input type="email" id="email" name="email" required placeholder="you@example.com">
                     </div>
+                    
                     <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" placeholder="How can we help?">
+                        <label for="subject">Subject *</label>
+                        <input type="text" id="subject" name="subject" required placeholder="How can we help?">
                     </div>
+                    
                     <div class="form-group">
                         <label for="message">Message *</label>
                         <textarea id="message" name="message" rows="5" required placeholder="Tell us what's on your mind..."></textarea>
                     </div>
-                    <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;"><i class="fas fa-paper-plane"></i> Send Message</button>
+                    
+                    <button type="submit" class="btn-primary" id="submitBtn" style="width: 100%; justify-content: center;">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
                 </form>
             </div>
         </div>
@@ -124,6 +204,54 @@
     </div>
 </footer>
 
-<script src="script.js"></script>
+<script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
+    
+    // Form submission handling with loading state
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const successMsg = document.getElementById('successMessage');
+    const errorMsg = document.getElementById('errorMessage');
+    
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            // Don't prevent default - let FormSubmit.co handle it
+            // But show loading state
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span class="loading-spinner"></span> Sending...';
+            submitBtn.disabled = true;
+            
+            // Check for URL success parameter on page load
+            setTimeout(() => {
+                // Re-enable after 3 seconds (form will redirect)
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            }, 3000);
+        });
+    }
+    
+    // Check URL for success parameter when page loads
+    window.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success') === 'true') {
+            successMsg.classList.add('show');
+            // Remove success parameter from URL without refreshing
+            window.history.replaceState({}, document.title, window.location.pathname);
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMsg.classList.remove('show');
+            }, 5000);
+        }
+    });
+</script>
+
 </body>
 </html>
